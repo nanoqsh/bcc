@@ -24,6 +24,7 @@ namespace bcc
 		std::shared_ptr<merkle_tree> tree;
 		std::string hash;
 		time_t timestamp;
+		std::vector<transaction> transactions;
 
 		block & operator=(const block & other) const {}
 
@@ -38,8 +39,10 @@ namespace bcc
 
 		std::string get_hash() const;
 		std::string to_string() const;
+		std::string to_debug_string() const;
 		bool check_hash(uint32_t difficulty);
 		void mine_block(uint32_t difficulty);
+		const std::vector<transaction> & get_transactions() const;
 	};
 }
 

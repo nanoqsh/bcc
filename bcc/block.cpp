@@ -3,6 +3,7 @@
 
 bcc::block::block(uint32_t index, std::vector<transaction> transactions) :
 	index(index),
+	transactions(transactions),
 	nonce(-1)
 {
 	std::vector<std::string> values;
@@ -50,8 +51,6 @@ void bcc::block::mine_block(uint32_t difficulty)
 		this->calculate_hash();
 	}
 	while (!this->check_hash(difficulty));
-
-	std::cout << "Mined! Hash: " << this->hash << "\n";
 }
 
 void bcc::block::calculate_hash()
@@ -70,4 +69,22 @@ std::string bcc::block::to_string() const
 		<< this->prev_hash;
 
 	return ss.str();
+}
+
+std::string bcc::block::to_debug_string() const
+{
+	std::stringstream ss;
+	ss
+		<< "Index: " << this->index << "\n"
+		<< "Timestamp: " << this->timestamp << "\n"
+		<< "Merkle root: " << this->tree->get_hash_top() << "\n"
+		<< "Nonce: " << this->nonce << "\n"
+		<< "Prev hash: " << this->prev_hash;
+
+	return ss.str();
+}
+
+const std::vector<bcc::transaction> & bcc::block::get_transactions() const
+{
+	return this->transactions;
 }

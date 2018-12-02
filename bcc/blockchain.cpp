@@ -8,7 +8,9 @@ bcc::blockchain::blockchain()
 		transaction(0, 0, "Genesis Block")
 		};
 
-	this->chain.push_back(block(0, genesis_transactions));
+	block genesis_block = block(0, genesis_transactions);
+	genesis_block.mine_block(0);
+	this->chain.push_back(genesis_block);
 }
 
 bcc::blockchain::~blockchain() {}
