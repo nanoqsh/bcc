@@ -3,15 +3,16 @@
 
 #include <vector>
 #include <string>
-#include "merkle_node.h"
+#include <memory>
+#include "merkle_node.hpp"
 
 
 class merkle_tree
 {
 private:
-	merkle_node * root;
+	std::shared_ptr<merkle_node> root;
 
-	merkle_node * build(std::vector<std::string> values);
+	std::shared_ptr<merkle_node> build(std::vector<std::string> values);
 
 public:
 	explicit merkle_tree(std::vector<std::string> values);

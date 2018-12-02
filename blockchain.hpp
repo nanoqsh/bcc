@@ -4,6 +4,7 @@
 #include <cstdint>
 #include <vector>
 #include "block.hpp"
+#include "transaction.hpp"
 
 
 class blockchain

@@ -1,18 +1,23 @@
 #include "block.hpp"
 
 
-block::block(uint32_t index, const std::string & data) :
+block::block(uint32_t index, std::vector<transaction> transactions) :
 	index(index),
-	data(data),
 	nonce(-1)
 {
+	std::vector<std::string> values;
+
+	for (transaction & tr : transactions)
+		values.push_back(tr.to_string());
+
+	this->tree = std::make_shared<merkle_tree>(values);
 	this->timestamp = std::time(nullptr);
 }
 
 block::block(const block & other) :
 	index(other.index),
 	nonce(other.nonce),
-	data(other.data),
+	tree(other.tree),
 	hash(other.hash),
 	timestamp(other.timestamp),
 	prev_hash(other.prev_hash)
@@ -51,13 +56,18 @@ void block::mine_block(uint32_t difficulty)
 
 void block::calculate_hash()
 {
+	this->hash = sha256(this->to_string());
+}
+
+std::string block::to_string() const
+{
 	std::stringstream ss;
 	ss
-		<< this->index
-		<< this->timestamp
-		<< this->data
-		<< this->nonce
+		<< this->index << ":"
+		<< this->timestamp << ":"
+		<< this->tree->get_hash_top() << ":"
+		<< this->nonce << ":"
 		<< this->prev_hash;
 
-	this->hash = sha256(ss.str());
+	return ss.str();
 }

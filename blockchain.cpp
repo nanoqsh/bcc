@@ -4,7 +4,11 @@
 blockchain::blockchain()
 	: difficulty(3)
 {
-	this->chain.push_back(block(0, "Genesis Block"));
+	std::vector<transaction> genesis_transactions = {
+		transaction("0", "0", "Genesis Block") 
+		};
+
+	this->chain.push_back(block(0, genesis_transactions));
 }
 
 blockchain::~blockchain() {}

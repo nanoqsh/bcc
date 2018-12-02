@@ -1,4 +1,4 @@
-#include "merkle_node.h"
+#include "merkle_node.hpp"
 
 
 merkle_node::merkle_node(const std::string & value) :
@@ -8,7 +8,7 @@ merkle_node::merkle_node(const std::string & value) :
 	this->hash = sha256(value);
 }
 
-merkle_node::merkle_node(merkle_node * left, merkle_node * right) :
+merkle_node::merkle_node(std::shared_ptr<merkle_node> left, std::shared_ptr<merkle_node> right) :
 	left(left),
 	right(right)
 {
@@ -22,11 +22,7 @@ merkle_node::merkle_node(merkle_node * left, merkle_node * right) :
 	this->hash = computed_hash;
 }
 
-merkle_node::~merkle_node()
-{
-	delete this->left;
-	delete this->right;
-}
+merkle_node::~merkle_node() {}
 
 bool merkle_node::has_children() const
 {
@@ -40,10 +36,10 @@ const std::string & merkle_node::get_hash() const
 
 const merkle_node * merkle_node::get_left() const
 {
-	return this->left;
+	return this->left.get();
 }
 
 const merkle_node * merkle_node::get_right() const
 {
-	return this->right;
+	return this->right.get();
 }
