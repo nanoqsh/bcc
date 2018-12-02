@@ -8,6 +8,12 @@
 
 namespace bcc
 {
+	/*
+	 * A transaction contains:
+	 *		- sender ID
+	 *		- recipient ID
+	 *		- message text
+	 */
 	class transaction
 	{
 	private:

@@ -15,15 +15,20 @@ namespace bcc
 		uint32_t difficulty;
 		std::vector<block> chain;
 
+		// Private copy constructor
 		blockchain(const blockchain & other) {}
+
+		// Private assignment operator
 		blockchain & operator=(const blockchain & other) const {}
 
 		const block & get_last_block() const;
 
 	public:
-		blockchain();
+		blockchain(uint32_t difficulty);
 		virtual ~blockchain();
 
+		// Add block to blockchain
+		// It will mine block for adjusted difficulty
 		void add_block(block & bl);
 
 	};

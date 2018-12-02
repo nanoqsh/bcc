@@ -9,6 +9,21 @@
 
 namespace bcc
 {
+	/*
+	 * The merkle tree is binary tree of hashes
+	 * Merkle tree's root consists of all included hashes
+	 *
+	 *        H   (H = hash(h ++ h))
+	 *      /   \
+	 *     h     h  (h = hash(l ++ l))
+	 *    / \   / \
+	 *   l   l l   l  (l is a raw value)
+	 *
+	 * where:
+	 *		"++" is string concatenation
+	 *		hash is SHA256 function
+	 *
+	 */
 	class merkle_tree
 	{
 	private:

@@ -26,23 +26,37 @@ namespace bcc
 		time_t timestamp;
 		std::vector<transaction> transactions;
 
+		// Private assignment operator
 		block & operator=(const block & other) const {}
 
+		// Calculate SHA256 hash
 		void calculate_hash();
 
 	public:
+		// Previous block hash
 		std::string prev_hash;
 
 		explicit block(uint32_t index, std::vector<transaction> transactions);
 		block(const block & other);
 		virtual ~block();
 
+		// Getters
 		std::string get_hash() const;
+		uint32_t get_index() const;
+		uint64_t get_nonce() const;
+		time_t get_timestamp() const;
+		const std::vector<transaction> & get_transactions() const;
+		std::string get_prev_hash() const;
+
+		// Check block hash for the appropriate difficulty
+		bool check_hash(uint32_t difficulty);
+
+		// Mine block while while nonce doesn't give valid hash
+		void mine_block(uint32_t difficulty);
+
+		// To strings for reading
 		std::string to_string() const;
 		std::string to_debug_string() const;
-		bool check_hash(uint32_t difficulty);
-		void mine_block(uint32_t difficulty);
-		const std::vector<transaction> & get_transactions() const;
 	};
 }
 

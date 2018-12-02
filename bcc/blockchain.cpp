@@ -1,8 +1,8 @@
 #include "blockchain.hpp"
 
 
-bcc::blockchain::blockchain()
-	: difficulty(3)
+bcc::blockchain::blockchain(uint32_t difficulty) :
+	difficulty(difficulty)
 {
 	std::vector<transaction> genesis_transactions = {
 		transaction(0, 0, "Genesis Block")
