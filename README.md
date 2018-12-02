@@ -1,6 +1,14 @@
 
 # Blockchain based chat
 
+## Build
+```
+git clone https://github.com/nekosora/bcc.git
+cd bcc
+make
+./blcc
+```
+
 ## Example
 
 ```c++
