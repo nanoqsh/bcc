@@ -1,18 +1,20 @@
 #include <iostream>
-#include "block.hpp"
-#include "blockchain.hpp"
-#include "transaction.hpp"
+#include "bcc/block.hpp"
+#include "bcc/blockchain.hpp"
+#include "bcc/transaction.hpp"
 #include <vector>
 #include <string>
-#include "merkle_tree.hpp"
-#include "merkle_node.hpp"
+#include "bcc/merkle_tree.hpp"
+#include "bcc/merkle_node.hpp"
 
 
 int main(int argc, char *argv[])
 {
+	using namespace bcc;
+
 	std::vector<transaction> transactions = {
-		transaction("1", "2", "Hello!"),
-		transaction("2", "1", "Hi sup!"),
+		transaction(1, 2, "Hello!"),
+		transaction(2, 1, "Hi sup!"),
 		};
 	
 	block bl(1, transactions);

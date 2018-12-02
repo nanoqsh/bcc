@@ -1,14 +1,14 @@
 #include "merkle_tree.hpp"
 
 
-merkle_tree::merkle_tree(std::vector<std::string> values)
+bcc::merkle_tree::merkle_tree(std::vector<std::string> values)
 {
 	this->root = this->build(values);
 }
 
-merkle_tree::~merkle_tree() {}
+bcc::merkle_tree::~merkle_tree() {}
 
-std::shared_ptr<merkle_node> merkle_tree::build(std::vector<std::string> values)
+std::shared_ptr<bcc::merkle_node> bcc::merkle_tree::build(std::vector<std::string> values)
 {
 	unsigned len = values.size();
 
@@ -42,12 +42,12 @@ std::shared_ptr<merkle_node> merkle_tree::build(std::vector<std::string> values)
 	}
 }
 
-std::string merkle_tree::get_hash_top() const
+std::string bcc::merkle_tree::get_hash_top() const
 {
 	return this->root->get_hash();
 }
 
-const merkle_node * merkle_tree::get_root() const
+const std::shared_ptr<bcc::merkle_node> bcc::merkle_tree::get_root() const
 {
-	return this->root.get();
+	return this->root;
 }

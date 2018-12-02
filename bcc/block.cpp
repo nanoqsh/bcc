@@ -1,7 +1,7 @@
 #include "block.hpp"
 
 
-block::block(uint32_t index, std::vector<transaction> transactions) :
+bcc::block::block(uint32_t index, std::vector<transaction> transactions) :
 	index(index),
 	nonce(-1)
 {
@@ -14,7 +14,7 @@ block::block(uint32_t index, std::vector<transaction> transactions) :
 	this->timestamp = std::time(nullptr);
 }
 
-block::block(const block & other) :
+bcc::block::block(const block & other) :
 	index(other.index),
 	nonce(other.nonce),
 	tree(other.tree),
@@ -24,14 +24,14 @@ block::block(const block & other) :
 {
 }
 
-block::~block() {}
+bcc::block::~block() {}
 
-std::string block::get_hash() const
+std::string bcc::block::get_hash() const
 {
 	return this->hash;
 }
 
-bool block::check_hash(uint32_t difficulty)
+bool bcc::block::check_hash(uint32_t difficulty)
 {
 	assert(difficulty <= this->hash.size() && "The difficulty is above than hash length!");
 
@@ -42,7 +42,7 @@ bool block::check_hash(uint32_t difficulty)
 	return true;
 }
 
-void block::mine_block(uint32_t difficulty)
+void bcc::block::mine_block(uint32_t difficulty)
 {
 	do
 	{
@@ -54,12 +54,12 @@ void block::mine_block(uint32_t difficulty)
 	std::cout << "Mined! Hash: " << this->hash << "\n";
 }
 
-void block::calculate_hash()
+void bcc::block::calculate_hash()
 {
 	this->hash = sha256(this->to_string());
 }
 
-std::string block::to_string() const
+std::string bcc::block::to_string() const
 {
 	std::stringstream ss;
 	ss

@@ -1,9 +1,9 @@
 #include "transaction.hpp"
 
 
-transaction::transaction(
-	const std::string & sender,
-	const std::string & recipient,
+bcc::transaction::transaction(
+	uint32_t sender,
+	uint32_t recipient,
 	const std::string & message
 	) :
 	sender(sender),
@@ -12,16 +12,16 @@ transaction::transaction(
 {
 }
 
-transaction::transaction(const transaction & other) :
+bcc::transaction::transaction(const transaction & other) :
 	sender(other.sender),
 	recipient(other.recipient),
 	message(other.message)
 {
 }
 
-transaction::~transaction() {}
+bcc::transaction::~transaction() {}
 
-std::string transaction::to_string() const
+std::string bcc::transaction::to_string() const
 {
 	std::stringstream ss;
 	ss
