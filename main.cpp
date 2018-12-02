@@ -2,17 +2,26 @@
 #include "block.hpp"
 #include "blockchain.hpp"
 
+#include <vector>
+#include <string>
+#include "merkle_tree.h"
+#include "merkle_node.h"
+#include "sha256/sha256.hpp"
+
 
 int main(int argc, char *argv[])
 {
-	blockchain blc;
+	std::vector<std::string> values = { "foo", "bar", "baz" };
+	merkle_tree tree(values);
 
-	for (unsigned i = 0; i < 10; ++i)
-	{
-		std::cout << "Mining block " << i << "\n";
-		block bl(i, "data");
-		blc.add_block(bl);
-	}
+	std::cout << tree.get_hash_top() << "\n";
+
+	const merkle_node * root = tree.get_root();
+	std::cout << root->get_hash() << "\n";
+
+	const merkle_node * left = root->get_left();
+	const merkle_node * right = root->get_right();
+	std::cout << sha256(left->get_hash() + right->get_hash()) << "\n";
 
 	return 0;
 }

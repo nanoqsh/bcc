@@ -6,7 +6,7 @@
 #include <ctime>
 #include <assert.h>
 #include <sstream>
-#include "sha256.hpp"
+#include "sha256/sha256.hpp"
 
 
 class block
