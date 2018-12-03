@@ -27,7 +27,7 @@ namespace bcc
 		std::vector<transaction> transactions;
 
 		// Private assignment operator
-		block & operator=(const block & other) const {}
+		block & operator=(const block & other) { return * this; }
 
 		// Calculate SHA256 hash
 		void calculate_hash();

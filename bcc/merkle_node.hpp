@@ -16,7 +16,7 @@ namespace bcc
 		std::string hash;
 
 		merkle_node(const merkle_node & other) {}
-		merkle_node & operator=(const merkle_node & other) {}
+		merkle_node & operator=(const merkle_node & other) { return * this; }
 
 	public:
 		explicit merkle_node(const std::string & value);

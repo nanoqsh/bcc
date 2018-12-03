@@ -29,6 +29,9 @@ namespace bcc
 	private:
 		std::shared_ptr<merkle_node> root;
 
+		merkle_tree(const merkle_tree & other) {}
+		merkle_tree & operator=(const merkle_tree & other) { return * this; }
+
 		std::shared_ptr<merkle_node> build(std::vector<std::string> values);
 
 	public:

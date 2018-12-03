@@ -19,7 +19,7 @@ namespace bcc
 		blockchain(const blockchain & other) {}
 
 		// Private assignment operator
-		blockchain & operator=(const blockchain & other) const {}
+		blockchain & operator=(const blockchain & other) { return * this; }
 
 		const block & get_last_block() const;
 
