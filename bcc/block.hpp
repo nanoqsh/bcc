@@ -51,7 +51,7 @@ namespace bcc
 		// Check block hash for the appropriate difficulty
 		bool check_hash(uint32_t difficulty);
 
-		// Mine block while while nonce doesn't give valid hash
+		// Mine block while nonce doesn't give valid hash
 		void mine_block(uint32_t difficulty);
 
 		// To strings for reading
