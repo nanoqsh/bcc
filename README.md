@@ -20,7 +20,7 @@ blockchain bc(3);
 
 // Create a block with index == 1
 // and message "Curiosity killed the cat"
-// form user with id == 3
+// from user with id == 3
 // to user with id == 2
 block b(1, { transaction(3, 2, "Curiosity killed the cat") });
 
