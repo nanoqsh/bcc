@@ -24,7 +24,7 @@ namespace bcc
 		transaction & operator=(const transaction & other) { return * this; }
 
 	public:
-		explicit transaction(
+		transaction(
 			uint32_t sender,
 			uint32_t recipient,
 			const std::string & message
