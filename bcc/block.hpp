@@ -36,7 +36,7 @@ namespace bcc
 		// Previous block hash
 		std::string prev_hash;
 
-		explicit block(uint32_t index, std::vector<transaction> transactions);
+		block(uint32_t index, std::vector<transaction> transactions);
 		block(const block & other);
 		virtual ~block();
 
