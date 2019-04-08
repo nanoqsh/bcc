@@ -24,7 +24,7 @@ namespace bcc
 		const block & get_last_block() const;
 
 	public:
-		blockchain(uint32_t difficulty);
+		explicit blockchain(uint32_t difficulty);
 		virtual ~blockchain();
 
 		// Add block to blockchain
