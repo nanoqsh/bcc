@@ -20,7 +20,7 @@ namespace bcc
 
 	public:
 		explicit merkle_node(const std::string & value);
-		explicit merkle_node(std::shared_ptr<merkle_node> left, std::shared_ptr<merkle_node> right);
+		merkle_node(std::shared_ptr<merkle_node> left, std::shared_ptr<merkle_node> right);
 		virtual ~merkle_node();
 		bool has_children() const;
 		const std::string & get_hash() const;
